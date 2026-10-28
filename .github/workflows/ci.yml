@@ -1,0 +1,27 @@
+name: CI
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: '17 7 * * 1'
+permissions:
+  contents: read
+  security-events: write
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: python -m pip install --upgrade pip && python -m pip install -e '.[test,postgres]'
+      - run: ruff check app scripts tests
+      - run: ruff format --check app scripts tests
+      - run: pytest
+      - run: python -m pip install pip-audit && pip-audit --skip-editable
+        continue-on-error: true
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

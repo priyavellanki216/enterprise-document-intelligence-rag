@@ -1,0 +1,17 @@
+flowchart LR
+  U[Browser / API Client] -->|API key + tenant| F[FastAPI + role checks]
+  F --> P[PDF/DOCX parser]
+  P --> C[Page-aware overlap chunker]
+  C --> E[FastEmbed ONNX · 384D]
+  E --> Q[(Qdrant vectors + tenant metadata)]
+  F --> DB[(PostgreSQL in Compose / SQLite locally)]
+  Q --> R[Dense retrieval]
+  Q --> B[BM25 over tenant-scoped chunks]
+  R --> H[Reciprocal Rank Fusion]
+  B --> H
+  H --> A[Dense threshold + abstention gate]
+  B --> E[Top BM25 passage promotion]
+  H --> E
+  E --> G{Extractive default / optional hosted LLM}
+  G --> UI[Quoted evidence + page citations]
+  F --> AU[Audit / feedback / conversations]

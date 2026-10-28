@@ -1,0 +1,15 @@
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+*.py[cod]
+data/raw/**
+data/app.db*
+data/qdrant/**
+reports/evaluation.json
+!data/raw/.gitkeep
+.DS_Store
