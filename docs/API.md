@@ -17,7 +17,8 @@ Interactive OpenAPI docs: `/docs` and `/redoc`. All application routes except he
 Example:
 
 ```bash
-curl -H 'X-API-Key: local-viewer-change-me' -H 'Content-Type: application/json' \
+export VIEWER_API_KEY="<viewer-key-from-your-local-.env>"
+curl -H "X-API-Key: ${VIEWER_API_KEY}" -H 'Content-Type: application/json' \
   -d '{"query":"What risks remain when using network isolation devices?","top_k":5}' \
   http://localhost:8000/api/v1/ask
 ```
