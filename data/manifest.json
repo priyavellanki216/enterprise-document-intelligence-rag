@@ -1,0 +1,20 @@
+{
+  "retrieved_at": "2026-10-28",
+  "documents": [
+    {
+      "document_id": "nist-sp-800-82-rev3",
+      "title": "Guide to Operational Technology (OT) Security",
+      "publisher": "National Institute of Standards and Technology (NIST), U.S. Department of Commerce",
+      "publication": "NIST Special Publication 800-82 Revision 3",
+      "published": "2023-09",
+      "source_url": "https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-82r3.pdf",
+      "publisher_page": "https://csrc.nist.gov/pubs/sp/800/82/r3/final",
+      "license_note": "NIST front matter states the publication may be used voluntarily by nongovernmental organizations and is not subject to U.S. copyright; attribution appreciated. Third-party contributions/materials are acknowledged. Local processing only; do not redistribute the PDF or extracted full text without reviewing third-party notices and applicable law.",
+      "file_type": "PDF",
+      "bytes_observed": 8584345,
+      "sha256_observed": "608f554514d381853e24e0b33123b7080fbd757826f460032690aade63394616",
+      "pages_observed": 316,
+      "processing": "PDF page text extraction, page-aware word-window chunking with overlap; raw PDF excluded from version control; no OCR or full-text redistribution."
+    }
+  ]
+}

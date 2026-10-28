@@ -1,0 +1,39 @@
+services:
+  api:
+    build: .
+    ports: ["8000:8000"]
+    environment:
+      APP_ENV: production
+      APP_DATA_DIR: /srv/data
+      DATABASE_URL: postgresql+psycopg://rag:${POSTGRES_PASSWORD:-local-only-change-me}@postgres:5432/rag
+      QDRANT_URL: http://qdrant:6333
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-BAAI/bge-small-en-v1.5}
+      RAG_API_KEYS: ${RAG_API_KEYS:-local-admin-change-me:demo:admin,local-viewer-change-me:demo:viewer}
+    volumes:
+      - app_data:/srv/data
+    depends_on:
+      postgres:
+        condition: service_healthy
+      qdrant:
+        condition: service_started
+    restart: unless-stopped
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: rag
+      POSTGRES_USER: rag
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-local-only-change-me}
+    volumes: ["postgres_data:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rag -d rag"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+  qdrant:
+    image: qdrant/qdrant:v1.14.1
+    volumes: ["qdrant_data:/qdrant/storage"]
+    restart: unless-stopped
+volumes:
+  app_data:
+  postgres_data:
+  qdrant_data:

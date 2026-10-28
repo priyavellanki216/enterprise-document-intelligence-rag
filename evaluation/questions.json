@@ -1,0 +1,14 @@
+{
+  "version": "1.0.0",
+  "source_document": "NIST SP 800-82 Rev. 3",
+  "page_numbering": "1-based PDF page index, not printed page label",
+  "questions": [
+    {"id":"ot-failsafe-01","question":"What does fail-safe design mean for an OT system when a component fails?","answerable":true,"relevant_pdf_pages":[96],"relevance_grade":2,"review_note":"Manually checked against PDF page 96; source describes safe state, injury/property prevention, cascading events."},
+    {"id":"network-isolation-01","question":"What risks remain when an organization uses network isolation devices?","answerable":true,"relevant_pdf_pages":[120],"relevance_grade":2,"review_note":"Manually checked against PDF page 120; lateral movement within a segment and vulnerable protocols remain concerns."},
+    {"id":"mfa-01","question":"What factors can be used for multi-factor authentication?","answerable":true,"relevant_pdf_pages":[123],"relevance_grade":2,"review_note":"Manually checked against PDF page 123; something known, possessed, and inherent are described."},
+    {"id":"password-01","question":"What does the guide recommend about default passwords on OT equipment?","answerable":true,"relevant_pdf_pages":[124],"relevance_grade":2,"review_note":"Manually checked against PDF page 124; organizations are encouraged to change default passwords."},
+    {"id":"password-02","question":"How should privileged account passwords receive additional protection?","answerable":true,"relevant_pdf_pages":[125],"relevance_grade":2,"review_note":"Manually checked against PDF page 125; stronger requirements, more frequent change, physical safeguards."},
+    {"id":"unanswerable-01","question":"What exact PLC scan interval in milliseconds does the guide mandate for every facility?","answerable":false,"relevant_pdf_pages":[],"relevance_grade":0,"review_note":"Manually reviewed as unanswerable: the guide is guidance and does not establish a universal mandated interval."},
+    {"id":"unanswerable-02","question":"What is the certified torque value for a 10 mm stainless-steel flange bolt?","answerable":false,"relevant_pdf_pages":[],"relevance_grade":0,"review_note":"Outside this corpus; no mechanical fastener torque specification is indexed."}
+  ]
+}
